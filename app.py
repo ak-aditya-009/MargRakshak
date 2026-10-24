@@ -983,6 +983,30 @@ html, body, .stApp {
         padding: 16px;
     }
 }
+/* Make the upper strip transparent */
+[data-testid="stDecoration"] {
+    background: transparent !important;
+    display: none !important;
+}
+
+[data-testid="stHeader"] {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Remove the dark top border/strip */
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"] {
+    background-color: #ffffff !important;
+    border-top: none !important;
+}
+
+/* Keep the brand and controls visible */
+[data-testid="stToolbar"] {
+    background: transparent !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
