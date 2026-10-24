@@ -39,3 +39,56 @@ MargRakshak/
 ├── README.md             # Project documentation
 └── assets/               # Optional images and other resources
 ```
+🔄 How It Works
+
+A user uploads an image of a damaged road.
+
+The trained YOLO model analyzes the image and predicts road damage.
+
+The user provides the relevant location information.
+
+The application creates or stores a road damage report.
+
+Reports can be displayed on an interactive map.
+
+Administrators can review reports and update their status.
+
+The collected reports can support infrastructure monitoring and maintenance prioritization.
+
+🎯 Project Objective
+
+The primary objective of MargRakshak is to explore how artificial intelligence and geospatial visualization can improve road damage reporting and maintenance planning.
+
+By combining automated image analysis, location-based reports, and an interactive dashboard, the project aims to make road damage information easier to access and manage.
+
+🔮 Future Scope
+
+Integration with live GPS and mobile reporting.
+
+Improved pothole and crack detection accuracy.
+
+Automated damage severity assessment.
+
+Risk-based maintenance prioritization.
+
+Notifications for critical road damage.
+
+Integration with government road maintenance systems.
+
+Cloud database integration for persistent reports.
+
+Support for regional languages across India.
+
+Analytics dashboards for identifying damage hotspots.
+
+⚠️ Limitations
+
+Detection results depend on the quality and diversity of the training data.
+
+Predictions may contain false positives or missed road defects.
+
+Location accuracy depends on the information submitted by users.
+
+AI predictions should be verified before official maintenance decisions are made.
+
+Deployment performance depends on the available computing resources.
