@@ -590,15 +590,15 @@ st.markdown("""
    ======================================== */
 
 :root {
-    --primary: #ff4b55;
-    --primary-hover: #e63845;
-    --navy: #174477;
-    --heading: #172033;
-    --text: #475569;
-    --muted: #64748b;
-    --background: #ffffff;
-    --surface: #f8fafc;
-    --border: #e2e8f0;
+    --primary: #0vi6d3 
+    --primary-hover: #059669 
+    --navy: #111827 (Rich Jet Black)
+    --heading: #1f2937 (Dark Lead)
+    --text: #4b5563 (Medium Gray)
+    --muted: #9ca3af (Silver Gray)
+    --background: #ffffff (Pure White)
+    --surface: #f3f4f6 (Clean Platinum)
+    --border: #e5e7eb (Soft Light Gray)
 }
 
 /* Main application background */
