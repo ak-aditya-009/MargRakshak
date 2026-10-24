@@ -590,61 +590,73 @@ st.markdown("""
    ======================================== */
 
 :root {
-    --primary: #0vi6d3 
-    --primary-hover: #059669 
-    --navy: #174477;
-    --heading: #172033;
+    /* Color Palette */
+    --primary: #2563eb;       /* Royal Blue */
+    --primary-hover: #1d4ed8;
+    --navy: #0f172a;          /* Deep Slate */
+    --heading: #1e293b;
     --text: #475569;
-    --muted: #64748b;
-    --background: #ffffff;
-    --surface: #f8fafc;
-    --border: #e2e8f0
+    --muted: #94a3b8;
+    --background: #f8fafc;    /* Softer background */
+    --surface: #ffffff;       /* Pure white cards */
+    --border: #e2e8f0;
+    
+    /* Custom Button Colors */
+    --submit-bg: #10b981;     /* Emerald Green */
+    --submit-hover: #059669;
+    --inspect-bg: #6366f1;    /* Indigo */
+    --inspect-hover: #4f46e5;
 }
 
-/* Main application background */
+/* ========================================
+   GLOBAL LAYOUT & TYPOGRAPHY
+   ======================================== */
+
 .stApp,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"] {
     background-color: var(--background) !important;
-    color: var(--heading);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Remove excess space above the main content */
+/* Optimize spacing */
 [data-testid="stAppViewBlockContainer"] {
-    padding-top: 0.5rem !important;
+    padding-top: 1.5rem !important;
 }
 
 .stAppViewBlockContainer,
 .block-container {
-    max-width: 1500px !important;
-    padding: 0.5rem 2rem 2rem !important;
+    max-width: 1200px !important; 
+    padding: 1rem 2rem 3rem !important;
 }
 
-/* Streamlit header and toolbar */
+/* Hide default Streamlit top decoration and header */
 [data-testid="stHeader"] {
     height: 0 !important;
     min-height: 0 !important;
     background: transparent !important;
 }
+[data-testid="stToolbar"] { background: transparent !important; }
+[data-testid="stDecoration"] { display: none !important; }
 
-[data-testid="stToolbar"] {
-    background: #ffffff !important;
+/* General headings and text */
+.stApp h1, .stApp h2, .stApp h3, .stApp h4 {
+    color: var(--heading);
+    font-weight: 700;
 }
 
-[data-testid="stDecoration"] {
-    display: none !important;
-}
+/* ========================================
+   CUSTOM BRANDING HEADER
+   ======================================== */
 
-/* Header branding */
 .rw-brand {
     display: flex !important;
     align-items: center !important;
-    gap: 14px;
+    gap: 16px;
     width: 100%;
-    min-height: 70px;
-    margin: 0 0 18px 0 !important;
+    margin: 0 0 24px 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
 }
 
 .rw-logo {
@@ -652,209 +664,248 @@ st.markdown("""
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: 58px;
-    height: 58px;
-    border-radius: 16px;
-    background: #eaf1ff;
-    color: var(--navy);
-    font-size: 36px;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+    color: var(--primary);
+    font-size: 32px;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.1);
 }
 
-/* Keep the brand title from being clipped */
 .rw-brand > div:last-child {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    min-width: 0;
-    overflow: visible !important;
 }
 
 .rw-brand h1 {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    height: auto !important;
-    overflow: visible !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: var(--navy) !important;
-    font-size: 32px !important;
-    font-weight: 800 !important;
-    letter-spacing: -0.8px;
-    line-height: 1.25 !important;
-    white-space: normal !important;
-}
-
-.rw-brand h1 span {
     color: var(--primary) !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    line-height: 1.2 !important;
 }
 
 .rw-brand p {
-    margin: 4px 0 0 !important;
-    padding: 0 !important;
+    margin: 6px 0 0 !important;
     color: var(--muted) !important;
-    font-size: 14px;
-    line-height: 1.4 !important;
+    font-size: 15px;
+    font-weight: 500;
 }
 
-/* General headings and text */
-.stApp h1,
-.stApp h2,
-.stApp h3,
-.stApp h4 {
-    color: var(--heading);
+/* ========================================
+   LANGUAGE TOGGLE (ENGLISH / HINDI) FIX
+   ======================================== */
+
+/* Ensure the text labels (English/Hindi) are visible and styled */
+[data-testid="stRadio"] div[role="radiogroup"] label {
+    color: var(--heading) !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    cursor: pointer;
 }
 
-.stApp p,
-.stApp label,
-.stApp [data-testid="stCaptionContainer"] {
-    color: var(--text);
+/* Display radio buttons horizontally with nice spacing */
+[data-testid="stRadio"] div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.5rem !important;
+    align-items: center;
 }
 
-/* Top navigation buttons */
+/* Style the active radio button to match the theme */
+[data-testid="stRadio"] div[role="radiogroup"] div[data-baseweb="radio"] div:first-child {
+    background-color: var(--primary) !important;
+}
+
+/* ========================================
+   BUTTONS (SUBMIT, INSPECT & NATIVE)
+   ======================================== */
+
+/* General Native Streamlit Buttons */
 div.stButton > button {
-    min-height: 46px;
+    min-height: 48px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    background: #f0f5fd;
-    color: var(--navy);
+    background: var(--surface);
+    color: var(--heading);
     font-weight: 600;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 div.stButton > button:hover {
-    background: #e3ecfa;
-    border-color: #b8cbed;
-    color: var(--navy);
+    border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Primary and active buttons */
-div.stButton > button[kind="primary"],
-.stApp div[data-testid="stButton"] button[kind="primary"] {
+/* Streamlit Native Primary Button */
+div.stButton > button[kind="primary"] {
     background: var(--primary);
-    border: 1px solid var(--primary);
+    border: none;
     color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
 }
 
 div.stButton > button[kind="primary"]:hover {
     background: var(--primary-hover);
-    border-color: var(--primary-hover);
-    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* Dashboard cards */
+/* CUSTOM HTML BUTTONS (Submit & Inspect) */
+/* Use via: st.markdown('<button class="btn-submit">Submit</button>', unsafe_allow_html=True) */
+.btn-submit, .btn-inspect {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 8px;
+}
+
+.btn-submit {
+    background-color: var(--submit-bg);
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.btn-submit:hover {
+    background-color: var(--submit-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-inspect {
+    background-color: var(--inspect-bg);
+    color: white;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+
+.btn-inspect:hover {
+    background-color: var(--inspect-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* ========================================
+   CARDS, INPUTS & METRICS
+   ======================================== */
+
 .rw-card {
-    background: #ffffff;
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 4px 16px rgba(23, 68, 119, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
 }
 
 .rw-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(23, 68, 119, 0.10);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.08), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
 }
 
 .rw-card h3 {
-    margin-top: 8px;
+    margin-top: 0;
+    margin-bottom: 12px;
     color: var(--heading);
-    font-size: 19px;
-}
-
-.rw-card p {
-    color: var(--muted);
-    line-height: 1.6;
+    font-size: 20px;
 }
 
 /* Inputs and dropdowns */
 .stApp input,
 .stApp textarea,
 .stApp [data-baseweb="select"] > div {
-    background-color: #ffffff;
+    background-color: var(--surface);
     color: var(--heading);
-    border-color: var(--border);
-    border-radius: 9px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stApp input:focus,
+.stApp textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* File uploader */
 [data-testid="stFileUploader"] {
     background: var(--surface);
-    border: 1px dashed #b8cbed;
-    border-radius: 14px;
-    padding: 12px;
+    border: 2px dashed var(--muted);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.2s ease;
 }
 
-/* Dataframes and tables */
-[data-testid="stDataFrame"],
-[data-testid="stTable"] {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--primary);
+    background: #f0f5ff;
 }
 
 /* Metrics */
 [data-testid="stMetric"] {
-    background: #ffffff;
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 3px 12px rgba(23, 68, 119, 0.04);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-left: 4px solid var(--primary);
 }
 
 [data-testid="stMetricLabel"] {
     color: var(--muted);
+    font-weight: 500;
+    font-size: 14px;
 }
 
 [data-testid="stMetricValue"] {
     color: var(--navy);
-    font-weight: 750;
+    font-weight: 800;
+    font-size: 28px;
 }
 
-/* Alerts and notices */
-[data-testid="stAlert"] {
-    border-radius: 12px;
-}
+/* ========================================
+   SIDEBAR & UTILITIES
+   ======================================== */
 
-/* Sidebar */
 [data-testid="stSidebar"] {
-    background: #f4f7fc;
+    background: var(--surface);
     border-right: 1px solid var(--border);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.02);
 }
 
-/* Dividers */
 hr {
     border-color: var(--border);
 }
 
-/* Responsive layout */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    [data-testid="stAppViewBlockContainer"],
     .stAppViewBlockContainer,
     .block-container {
-        padding: 0.5rem 1rem 1.5rem !important;
-    }
-
-    .rw-brand {
-        gap: 10px;
-        margin-bottom: 14px !important;
+        padding: 1rem 1rem 2rem !important;
     }
 
     .rw-brand h1 {
-        font-size: 24px !important;
-        letter-spacing: -0.4px;
+        font-size: 26px !important;
     }
 
     .rw-logo {
-        width: 46px;
-        height: 46px;
-        font-size: 28px;
-    }
-
-    .rw-brand p {
-        font-size: 12px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        border-radius: 14px;
     }
 }
 </style>
