@@ -597,7 +597,7 @@ st.markdown("""
     --text: #4b5563 (Medium Gray)
     --muted: #9ca3af (Silver Gray)
     --background: #ffffff (Pure White)
-    --surface: #f3f4f6 (Clean Platinum)
+    --surface: #f8fafc 
     --border: #e5e7eb (Soft Light Gray)
 }
 
